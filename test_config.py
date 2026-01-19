@@ -23,7 +23,7 @@ def test_github_connection():
     github_token = os.getenv('GITHUB_TOKEN')
     repo_owner = os.getenv('REPO_OWNER')
     repo_name = os.getenv('REPO_NAME')
-    boss_username = os.getenv('BOSS_USERNAME')
+    reviewer_username = os.getenv('REVIEWER_USERNAME')
     your_username = os.getenv('YOUR_USERNAME')
     
     # Check if variables are set
@@ -45,10 +45,10 @@ def test_github_connection():
     else:
         print(f"   ✓ REPO_NAME: {repo_name}")
     
-    if not boss_username:
-        missing.append("BOSS_USERNAME")
+    if not reviewer_username:
+        missing.append("REVIEWER_USERNAME")
     else:
-        print(f"   ✓ BOSS_USERNAME: {boss_username}")
+        print(f"   ✓ REVIEWER_USERNAME: {reviewer_username}")
     
     if not your_username:
         missing.append("YOUR_USERNAME")
@@ -139,14 +139,14 @@ def test_github_connection():
             print(f"   ✗ Error: {e.data.get('message', str(e))}")
         return False
     
-    # Test boss username
+    # Test reviewer username
     try:
-        boss_user = g.get_user(boss_username)
-        print(f"   ✓ BOSS_USERNAME ({boss_username}) exists")
-        print(f"     Name: {boss_user.name or 'N/A'}")
+        reviewer_user = g.get_user(reviewer_username)
+        print(f"   ✓ REVIEWER_USERNAME ({reviewer_username}) exists")
+        print(f"     Name: {reviewer_user.name or 'N/A'}")
     except GithubException as e:
         if e.status == 404:
-            print(f"   ✗ BOSS_USERNAME ({boss_username}) not found")
+            print(f"   ✗ REVIEWER_USERNAME ({reviewer_username}) not found")
             print("     Please check the spelling (case-sensitive)")
         else:
             print(f"   ✗ Error: {e.data.get('message', str(e))}")
@@ -175,20 +175,20 @@ def test_github_connection():
             for i, pr in enumerate(your_pulls[:3], 1):
                 print(f"     {i}. PR #{pr.number}: {pr.title} ({pr.state})")
             
-            # Check for reviews from boss
+            # Check for reviews from reviewer
             reviews_found = False
             for pr in your_pulls[:5]:  # Check first 5 PRs
                 for review in pr.get_reviews():
-                    if review.user.login == boss_username:
+                    if review.user.login == reviewer_username:
                         reviews_found = True
                         break
                 if reviews_found:
                     break
             
             if reviews_found:
-                print(f"\n   ✓ Found reviews from {boss_username}!")
+                print(f"\n   ✓ Found reviews from {reviewer_username}!")
             else:
-                print(f"\n   ⚠ Warning: No reviews found from {boss_username} in recent PRs")
+                print(f"\n   ⚠ Warning: No reviews found from {reviewer_username} in recent PRs")
                 print(f"     (Checked first 5 PRs)")
     except Exception as e:
         print(f"   ✗ Error checking PRs: {str(e)}")

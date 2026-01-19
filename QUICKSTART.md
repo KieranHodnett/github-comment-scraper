@@ -14,7 +14,7 @@ cp env.template .env
 # 3. Edit .env with your credentials
 # - GITHUB_TOKEN: https://github.com/settings/tokens (needs 'repo' scope)
 # - ANTHROPIC_API_KEY: https://console.anthropic.com/
-# - Fill in: REPO_OWNER, REPO_NAME, BOSS_USERNAME, YOUR_USERNAME
+# - Fill in: REPO_OWNER, REPO_NAME, REVIEWER_USERNAME, YOUR_USERNAME
 ```
 
 ## ✅ Verify Setup
@@ -58,7 +58,7 @@ GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
 ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxx
 REPO_OWNER=facebook
 REPO_NAME=react
-BOSS_USERNAME=gaearon
+REVIEWER_USERNAME=gaearon
 YOUR_USERNAME=myusername
 ```
 

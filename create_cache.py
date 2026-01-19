@@ -38,7 +38,7 @@ def main():
         'GITHUB_TOKEN': os.getenv('GITHUB_TOKEN'),
         'REPO_OWNER': os.getenv('REPO_OWNER'),
         'REPO_NAME': os.getenv('REPO_NAME'),
-        'BOSS_USERNAME': os.getenv('BOSS_USERNAME'),
+        'REVIEWER_USERNAME': os.getenv('REVIEWER_USERNAME'),
         'YOUR_USERNAME': os.getenv('YOUR_USERNAME'),
     }
     
@@ -61,7 +61,7 @@ def main():
     
     comments_data = scraper.scrape_all_comments(
         author_username=required_vars['YOUR_USERNAME'],
-        reviewer_username=required_vars['BOSS_USERNAME']
+        reviewer_username=required_vars['REVIEWER_USERNAME']
     )
     
     # Save as JSON

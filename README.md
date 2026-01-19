@@ -27,7 +27,7 @@ GITHUB_TOKEN=your_github_token          # Get at: https://github.com/settings/to
 ANTHROPIC_API_KEY=your_anthropic_key    # Get at: https://console.anthropic.com/
 REPO_OWNER=repository_owner
 REPO_NAME=repository_name
-BOSS_USERNAME=reviewer_github_username
+REVIEWER_USERNAME=reviewer_github_username
 YOUR_USERNAME=your_github_username
 ```
 
